@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: linkforge
+          POSTGRES_PASSWORD: test-password
+          POSTGRES_DB: linkforge
+        ports:
+          - "5432:5432"
+        options: >-
+          --health-cmd "pg_isready -U linkforge -d linkforge"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Automated Test Suite
+        run: npm test
+
+      - name: Production Build
+        run: npm run build
+        env:
+          DATABASE_URL: postgresql://linkforge:test-password@localhost:5432/linkforge?schema=public
+          ADMIN_API_KEY: ci-test-key-32-chars-long-hex-code
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
