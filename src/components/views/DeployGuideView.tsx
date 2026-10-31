@@ -45,7 +45,7 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # 3. Clone the LinkForge repository
-git clone https://github.com/YOUR_USERNAME/linkforge.git
+git clone https://github.com/thekeshavsaini/linkforge.git
 cd linkforge
 
 # 4. Generate environment variables

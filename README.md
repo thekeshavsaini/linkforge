@@ -101,7 +101,7 @@ The fastest way to deploy LinkForge is using Docker Compose on a Linux VPS.
 ### 1. Clone Repository & Setup Environment
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/linkforge.git
+git clone https://github.com/thekeshavsaini/linkforge.git
 cd linkforge
 
 # Copy sample configuration
@@ -175,7 +175,7 @@ A Hostinger KVM VPS (Ubuntu 24.04 or 22.04 LTS) offers the best combination of p
    ```
 4. **Clone & Configure LinkForge**:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/linkforge.git
+   git clone https://github.com/thekeshavsaini/linkforge.git
    cd linkforge
    cp .env.example .env
    nano .env
@@ -228,7 +228,7 @@ To develop or test LinkForge locally without Docker:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/YOUR_USERNAME/linkforge.git
+git clone https://github.com/thekeshavsaini/linkforge.git
 cd linkforge
 
 # 2. Install dependencies

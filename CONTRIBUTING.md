@@ -21,7 +21,7 @@ We are committed to providing a welcoming, inclusive, and harassment-free experi
 ### 2. Fork and Clone
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/linkforge.git
+git clone https://github.com/thekeshavsaini/linkforge.git
 cd linkforge
 npm install
 ```
